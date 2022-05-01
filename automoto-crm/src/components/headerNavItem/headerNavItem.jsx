@@ -6,6 +6,8 @@ import {
   AiOutlineUserSwitch,
   AiOutlineCheck,
   AiOutlineStock,
+  AiOutlineSetting,
+  AiOutlineComment,
 } from "react-icons/ai";
 
 function HeaderNavItem({ itemName, iconName, iconSize, iconColor }) {
@@ -20,13 +22,17 @@ function HeaderNavItem({ itemName, iconName, iconSize, iconColor }) {
         return <AiOutlineCheck color={iconColor} size={iconSize} />;
       case "AiOutlineStock":
         return <AiOutlineStock color={iconColor} size={iconSize} />;
+      case "AiOutlineSetting":
+        return <AiOutlineSetting color={iconColor} size={iconSize} />;
+      case "AiOutlineComment":
+        return <AiOutlineComment color={iconColor} size={iconSize} />;
       default:
         return <AiOutlineUserAdd color={iconColor} size={iconSize} />;
     }
   };
 
   return (
-    <div className="w-full flex items-center mb-6 py-4 -ml-2 rounded-xl hover:bg-gradient-to-r from-green-400 to-blue-500">
+    <div className="w-full flex items-center mb-5 py-3 -ml-2 rounded-xl hover:bg-gradient-to-r from-green-400 to-blue-500">
       <div className="ml-2">{getIcon(iconName)}</div>
       <div className="ml-4">
         <h4 className="text-xl text-white font-medium">{itemName}</h4>

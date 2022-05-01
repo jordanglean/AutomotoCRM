@@ -6,7 +6,7 @@ import HeaderNavItem from "../headerNavItem/HeaderNavItem";
 
 function Header({ heading }) {
   return (
-    <div className="bg-neutral-900 w-1/6 h-screen p-4 pl-8">
+    <div className="bg-neutral-900 w-1/6 h-screen p-4 pl-8 shadow-xl">
       <h1 className="text-4xl text-gray-300 font-semibold mb-12 mt-2">
         {heading}
       </h1>
@@ -29,7 +29,7 @@ function Header({ heading }) {
         </div>
         {/* Section One End */}
         {/* Section Two */}
-        <div className="">
+        <div className="mt-4">
           <div>
             <HeaderNav heading="Other" />
           </div>
@@ -41,6 +41,9 @@ function Header({ heading }) {
     </div>
   );
 }
+sadsa da das dasd as 
+asd asd as
+sd ad 
 
 Header.defaultProps = {
   heading: "CRM Portal",

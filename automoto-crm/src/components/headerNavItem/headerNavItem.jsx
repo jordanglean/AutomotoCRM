@@ -32,7 +32,7 @@ function HeaderNavItem({ itemName, iconName, iconSize, iconColor }) {
   };
 
   return (
-    <div className="w-full flex items-center mb-5 py-3 -ml-2 rounded-xl hover:bg-gradient-to-r from-green-400 to-blue-500">
+    <div className="w-full flex items-center mb-5 py-3 -ml-2 rounded-3xl hover:bg-gradient-to-r from-green-400 to-blue-500">
       <div className="ml-2">{getIcon(iconName)}</div>
       <div className="ml-4">
         <h4 className="text-xl text-white font-medium">{itemName}</h4>

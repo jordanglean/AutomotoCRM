@@ -1,20 +1,50 @@
 import React from "react";
 import PropType from "prop-types";
 // Icons
-import { AiOutlineUserAdd, AiOutlineUserSwitch } from "react-icons/ai";
-import { FiUserCheck } from "react-icons/fi";
+import {
+  AiOutlineUserAdd,
+  AiOutlineUserSwitch,
+  AiOutlineCheck,
+  AiOutlineStock,
+} from "react-icons/ai";
 
-function headerNavItem({ iconName }) {
+function HeaderNavItem({ itemName, iconName, iconSize, iconColor }) {
+  // Select Icon base on String name
+  const getIcon = (iconName) => {
+    switch (iconName) {
+      case "AiOutlineUserAdd":
+        return <AiOutlineUserAdd color={iconColor} size={iconSize} />;
+      case "AiOutlineUserSwitch":
+        return <AiOutlineUserSwitch color={iconColor} size={iconSize} />;
+      case "AiOutlineCheck":
+        return <AiOutlineCheck color={iconColor} size={iconSize} />;
+      case "AiOutlineStock":
+        return <AiOutlineStock color={iconColor} size={iconSize} />;
+      default:
+        return <AiOutlineUserAdd color={iconColor} size={iconSize} />;
+    }
+  };
+
   return (
-    <div className="flex-row justify-between items-center">
-      <div></div>
-      <div></div>
+    <div className="w-full flex items-center mb-6 py-4 -ml-2 rounded-xl hover:bg-gradient-to-r from-green-400 to-blue-500">
+      <div className="ml-2">{getIcon(iconName)}</div>
+      <div className="ml-4">
+        <h4 className="text-xl text-white font-medium">{itemName}</h4>
+      </div>
     </div>
   );
 }
 
-headerNavItem.propTypes = {
-  iconName: PropType.element,
+HeaderNavItem.defaultProps = {
+  iconSize: 38,
+  iconColor: "white",
 };
 
-export default headerNavItem;
+HeaderNavItem.propTypes = {
+  itemName: PropType.string.isRequired,
+  iconName: PropType.string.isRequired,
+  iconColor: PropType.string,
+  iconSize: PropType.number,
+};
+
+export default HeaderNavItem;

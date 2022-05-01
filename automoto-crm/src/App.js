@@ -5,7 +5,7 @@ import Header from "./components/header/Header";
 function App() {
   return (
     <div className="h-full">
-      <Header heading="CRM Portal" />
+      <Header heading="AutoMoto" />
     </div>
   );
 }

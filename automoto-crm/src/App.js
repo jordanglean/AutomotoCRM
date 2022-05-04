@@ -15,7 +15,7 @@ import Support from "./pages/Support";
 function App() {
   return (
     <Router>
-      <div className="h-full bg-neutral-800 flex">
+      <div className="h-full w-screen bg-neutral-800 flex">
         {/* Nav Bar */}
         <Header heading="AutoMoto" />
         {/* Routes */}

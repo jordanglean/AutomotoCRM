@@ -7,7 +7,7 @@ import HeaderNavItem from "../headerNavItem/HeaderNavItem";
 
 function Header({ heading }) {
   return (
-    <div className="bg-neutral-900 w-1/5 h-screen p-4 pl-8 shadow-xl">
+    <div className="bg-neutral-900 w-[320px] h-screen p-4 pl-8 shadow-xl">
       <Link to="/">
         <h1 className="text-4xl text-gray-300 font-semibold mb-12 mt-2">
           {heading}

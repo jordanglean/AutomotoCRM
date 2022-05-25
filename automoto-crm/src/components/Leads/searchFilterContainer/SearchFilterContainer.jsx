@@ -15,7 +15,7 @@ function SearchFilterContainer() {
   const filterHandler = () => {};
 
   return (
-    <div className="w-full py-4 mt-2">
+    <div className="py-4 mt-2">
       <div>
         <h3 className="text-white font-semibold text-4xl tracking-wide">
           39 New Leads
@@ -32,9 +32,18 @@ function SearchFilterContainer() {
             onChange={searchBoxHandler}
           />
         </div>
-        <div>
+        {/* TODO: Break into components */}
+        <div className="flex gap-2 px-4">
           <div className="bg-white pt-2 pl-3 pr-3 pb-2 rounded-full w-28 flex justify-between items-center">
             <p className="font-medium">Bike</p>
+            <IoFilterOutline />
+          </div>
+          <div className="bg-white pt-2 pl-3 pr-3 pb-2 rounded-full w-28 flex justify-between items-center">
+            <p className="font-medium">Cash</p>
+            <IoFilterOutline />
+          </div>
+          <div className="bg-white pt-2 pl-3 pr-3 pb-2 rounded-full w-28 flex justify-between items-center">
+            <p className="font-medium">Nearest</p>
             <IoFilterOutline />
           </div>
         </div>

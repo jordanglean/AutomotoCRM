@@ -5,6 +5,9 @@ import SearchFilterContainer from "../components/Leads/searchFilterContainer/Sea
 import AddLeadButton from "../components/addLeadButton/AddLeadButton";
 import AddLeadModal from "../components/addLeadModal/AddLeadModal";
 import AddLeadForm from "../components/addLeadModal/AddLeadForm";
+import LeadsList from "../components/LeadsList/LeadsList";
+// Context
+import { NewLeadsProvider } from "../context/NewLeadsContext";
 
 function Leads() {
   //Dummy Search Result Count
@@ -18,19 +21,24 @@ function Leads() {
   const hideModalHandler = () => setShowModal(false);
 
   return (
-    <div className="p-12 w-full">
-      <div>
-        <AddLeadModal show={showModal} handleClose={hideModalHandler}>
-          <AddLeadForm handleClose={hideModalHandler}/>
-        </AddLeadModal>
+    <NewLeadsProvider>
+      <div className="p-12 w-full">
+        <div>
+          <AddLeadModal show={showModal} handleClose={hideModalHandler}>
+            <AddLeadForm handleClose={hideModalHandler} />
+          </AddLeadModal>
 
-        <div className="w-full flex justify-between">
-          <LocationLink />
-          <AddLeadButton text="New Lead" onClick={showModalHandler} />
+          <div className="w-full flex justify-between">
+            <LocationLink />
+            <AddLeadButton text="New Lead" onClick={showModalHandler} />
+          </div>
+          <SearchFilterContainer />
         </div>
-        <SearchFilterContainer />
+        <div>
+          <LeadsList />
+        </div>
       </div>
-    </div>
+    </NewLeadsProvider>
   );
 }
 

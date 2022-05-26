@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropType from "prop-types";
+// Context
+import NewLeadsContext from "../../context/NewLeadsContext";
 
 function AddLeadForm({ handleClose }) {
   // Form Input State
@@ -11,6 +13,9 @@ function AddLeadForm({ handleClose }) {
   const [requireDelivery, setRequireDelivery] = useState(false);
   const [bike, setBike] = useState("");
   const [requireFinance, setRequireFinance] = useState(false);
+
+  // Context
+  const { addNewLeadHandler } = useContext(NewLeadsContext);
 
   // Input Handler
   const firstNameHandler = (e) => setFirstName(e.target.value);
@@ -35,7 +40,7 @@ function AddLeadForm({ handleClose }) {
       bike,
       requireFinance,
     };
-    console.log(newLead);
+    addNewLeadHandler(newLead);
     handleClose();
   };
 

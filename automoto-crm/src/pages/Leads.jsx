@@ -11,7 +11,6 @@ function Leads() {
   const resultCount = 20;
 
   // Modal State
-  // Modal State
   const [showModal, setShowModal] = useState(false);
 
   // Handlers
@@ -22,7 +21,7 @@ function Leads() {
     <div className="p-12 w-full">
       <div>
         <AddLeadModal show={showModal} handleClose={hideModalHandler}>
-          <AddLeadForm />
+          <AddLeadForm handleClose={hideModalHandler}/>
         </AddLeadModal>
 
         <div className="w-full flex justify-between">

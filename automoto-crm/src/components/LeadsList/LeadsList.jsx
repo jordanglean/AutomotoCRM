@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import NewLeadsContext from "../../context/NewLeadsContext";
+// Components Import
+import NewLeadsListCard from "../newLeadsListCard/NewLeadsListCard";
 
 function LeadsList() {
   const { newLeads } = useContext(NewLeadsContext);
 
   return (
-    <div>
+    <div className="w-full mt-4 grid grid-cols-4 gap-4">
       {newLeads.map((lead) => (
-        <h1 key={lead.firstName}>{lead.firstName}</h1>
+        <NewLeadsListCard key={lead.id} lead={lead} />
       ))}
     </div>
   );

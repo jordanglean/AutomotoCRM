@@ -22,7 +22,7 @@ function Leads() {
 
   return (
     <NewLeadsProvider>
-      <div className="p-12 w-full">
+      <div className="p-12 h-screen w-screen ml-[280px] overflow-hidden">
         <div>
           <AddLeadModal show={showModal} handleClose={hideModalHandler}>
             <AddLeadForm handleClose={hideModalHandler} />

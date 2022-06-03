@@ -6,6 +6,7 @@ import AddLeadButton from "../components/addLeadButton/AddLeadButton";
 import AddLeadModal from "../components/addLeadModal/AddLeadModal";
 import AddLeadForm from "../components/addLeadModal/AddLeadForm";
 import LeadsList from "../components/LeadsList/LeadsList";
+import NewLeadEdit from "../components/newLeadEdit/NewLeadEdit";
 // Context
 import { NewLeadsProvider } from "../context/NewLeadsContext";
 
@@ -23,6 +24,7 @@ function Leads() {
   return (
     <NewLeadsProvider>
       <div className="p-12 h-screen w-screen ml-[280px] overflow-hidden">
+        <NewLeadEdit />
         <div>
           <AddLeadModal show={showModal} handleClose={hideModalHandler}>
             <AddLeadForm handleClose={hideModalHandler} />

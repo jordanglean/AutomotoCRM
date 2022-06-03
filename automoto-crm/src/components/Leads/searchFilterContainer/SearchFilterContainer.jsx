@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-// Icons
+import React, { useState, useContext } from "react";
+import NewLeadsListCard from "../../newLeadsListCard/NewLeadsListCard";
 import { IoFilterOutline } from "react-icons/io5";
+import NewLeadsContext from "../../../context/NewLeadsContext";
 
 function SearchFilterContainer() {
   // Search Box State
   const [searchText, setSearchText] = useState("");
+  const { newLeads } = useContext(NewLeadsContext);
 
   // Search Box Handler
   const searchBoxHandler = (e) => {
@@ -18,7 +20,7 @@ function SearchFilterContainer() {
     <div className="py-4 mt-2">
       <div>
         <h3 className="text-white font-semibold text-4xl tracking-wide">
-          39 New Leads
+          {newLeads.length} New Leads
         </h3>
       </div>
       {/* Search and Filter Container */}

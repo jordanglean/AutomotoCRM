@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import NewLeadsContext from "../../context/NewLeadsContext";
+import NewLeadsContext from "../../context/NewLead/NewLeadsContext";
 // Icons
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
@@ -8,24 +8,30 @@ function NewLeadEdit() {
   const [showNewLeadEdit, setShowNewLeadEdit] = useState(false);
 
   // Lead Edit Context
-  const { leadEdit, setEditLead, setLeadEdit, updateNewLead, deleteNewLead } =
-    useContext(NewLeadsContext);
+  const {
+    leadEdit,
+    convertNewLead,
+    setLeadEdit,
+    closeLeadEdit,
+    updateNewLead,
+    deleteNewLead,
+  } = useContext(NewLeadsContext);
 
   // Side Effect on leadEdit
   useEffect(() => {
-    if (leadEdit.edit === true) {
+    if (setLeadEdit === true) {
       setShowNewLeadEdit(true);
+      setFirstName(leadEdit.firstName);
+      setLastName(leadEdit.lastName);
+      setEmail(leadEdit.email);
+      setPhoneNumber(leadEdit.phoneNumber);
+      setPostCode(leadEdit.postCode);
+      setRequireDelivery(leadEdit.requireDelivery);
+      setBike(leadEdit.bike);
+      setRequireFinance(leadEdit.requireFinance);
     } else {
       setShowNewLeadEdit(false);
     }
-    setFirstName(leadEdit.item.firstName);
-    setLastName(leadEdit.item.lastName);
-    setEmail(leadEdit.item.email);
-    setPhoneNumber(leadEdit.item.phoneNumber);
-    setPostCode(leadEdit.item.postCode);
-    setRequireDelivery(leadEdit.item.requireDelivery);
-    setBike(leadEdit.item.bike);
-    setRequireFinance(leadEdit.item.requireFinance);
   }, [leadEdit]);
 
   // Form Input State
@@ -48,9 +54,6 @@ function NewLeadEdit() {
   const bikeHandler = (e) => setBike(e.target.value);
   const requireFinanceHandler = (e) => setRequireFinance(e.target.value);
 
-  // Close Edit New Lead
-  const closeEditNewLead = () => setLeadEdit({ item: {}, edit: false });
-
   // Submit Update
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -65,22 +68,41 @@ function NewLeadEdit() {
       bike,
       requireFinance,
     };
-    if (leadEdit.edit === true) {
-      updateNewLead(leadEdit.item.id, updatedLead);
+    if (setLeadEdit === true) {
+      alert("Submit");
+      updateNewLead(leadEdit.id, updatedLead);
     }
   };
 
-  // Delete Handler
+  // Submit Convert Lead
+  const convertLeadHandler = () => {
+    console.log("LEAD CONVERTED");
+    const convertedLead = {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      postCode,
+      requireDelivery,
+      bike,
+      requireFinance,
+    };
+    convertNewLead(convertedLead);
+    setShowNewLeadEdit(false);
+  };
 
   return (
     <>
       {showNewLeadEdit ? (
-        <div className="bg-neutral-900 w-[500px] h-screen fixed top-0 right-0 p-8 shadow-xl">
+        <div className="bg-neutral w-[500px] h-screen fixed top-0 right-0 p-8 shadow-xl">
           <div className="w-full items-start justify-cente mb-8">
             <AiOutlineCloseCircle
               className="text-white"
               size={24}
-              onClick={() => closeEditNewLead()}
+              onClick={() => {
+                closeLeadEdit();
+                setShowNewLeadEdit(false);
+              }}
             />
           </div>
           <form onSubmit={handleFormSubmit}>
@@ -162,6 +184,13 @@ function NewLeadEdit() {
               </label>
               <input type="text" value={bike} onChange={bikeHandler} />
             </div>
+            {/* LEAD MESSAGE */}
+            <div className="mb-4">
+              <label htmlFor="FirstName" className="text-white mr-4">
+                Message
+              </label>
+              <input type="text" className="w-[200px] h-[100px]" />
+            </div>
             <div className="mt-24 flex-col-reverse items-center justify-end">
               {/* UPDATE BUTTON */}
               <div className="mt-4 flex items-center justify-center">
@@ -174,12 +203,25 @@ function NewLeadEdit() {
                   </p>
                 </button>
               </div>
+              {/* CONVERT LEAD BUTTON */}
+              <div className="mt-4 flex items-center justify-center">
+                <div
+                  className="bg-green-800 w-full flex items-center justify-center p-2 rounded-xl hover:bg-green-600"
+                  onClick={() => {
+                    convertLeadHandler();
+                  }}
+                >
+                  <p className="text-white font-semibold text-sm tracking-wider">
+                    CONVERT LEAD
+                  </p>
+                </div>
+              </div>
               {/* DELETE BUTTON */}
               <div className="mt-4 flex items-center justify-center">
                 <div
-                  className="bg-red-800 w-full flex items-center justify-center p-2 rounded-xl hover:bg-sky-600"
+                  className="bg-red-800 w-full flex items-center justify-center p-2 rounded-xl hover:bg-red-600"
                   onClick={() => {
-                    deleteNewLead(leadEdit.item.id);
+                    deleteNewLead(leadEdit.id);
                   }}
                 >
                   <p className="text-white font-semibold text-sm tracking-wider">

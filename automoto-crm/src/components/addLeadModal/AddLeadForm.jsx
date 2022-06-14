@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import PropType from "prop-types";
 // Context
-import NewLeadsContext from "../../context/NewLeadsContext";
+import NewLeadsContext from "../../context/NewLead/NewLeadsContext";
+import AlertContext from "../../context/Alert/AlertContext";
 
 function AddLeadForm({ handleClose }) {
   // Form Input State
@@ -16,6 +17,7 @@ function AddLeadForm({ handleClose }) {
 
   // Context
   const { addNewLeadHandler } = useContext(NewLeadsContext);
+  const { setAlert } = useContext(AlertContext);
 
   // Input Handler
   const firstNameHandler = (e) => setFirstName(e.target.value);
@@ -42,6 +44,7 @@ function AddLeadForm({ handleClose }) {
     };
     addNewLeadHandler(newLead);
     handleClose();
+    setAlert("New lead has been manually created!", "success");
   };
 
   return (

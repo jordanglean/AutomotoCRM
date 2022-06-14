@@ -10,7 +10,7 @@ function AddLeadModal({ handleClose, show, children }) {
         !show ? "invisible" : "visible"
       } fixed top-10 left-[600px] w-[600px] h-[600px]`}
     >
-      <section className="bg-neutral-900 w-full h-full rounded-xl p-4 shadow-xl">
+      <section className="bg-neutral w-full h-full rounded-xl p-4 shadow-xl">
         <div className="flex justify-end text-gray-300">
           <button type="submit" onClick={() => handleClose()}>
             <IoIosCloseCircleOutline size={25} />

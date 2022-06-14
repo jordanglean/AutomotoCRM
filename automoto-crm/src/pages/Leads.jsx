@@ -7,8 +7,10 @@ import AddLeadModal from "../components/addLeadModal/AddLeadModal";
 import AddLeadForm from "../components/addLeadModal/AddLeadForm";
 import LeadsList from "../components/LeadsList/LeadsList";
 import NewLeadEdit from "../components/newLeadEdit/NewLeadEdit";
-// Context
-import { NewLeadsProvider } from "../context/NewLeadsContext";
+import Alert from "../components/alert/Alert";
+
+// Context Providers
+import { NewLeadsProvider } from "../context/NewLead/NewLeadsContext";
 
 function Leads() {
   //Dummy Search Result Count
@@ -23,8 +25,11 @@ function Leads() {
 
   return (
     <NewLeadsProvider>
-      <div className="p-12 h-screen w-screen ml-[280px] overflow-hidden">
-        <NewLeadEdit />
+      <div className="px-12 pt-2 h-screen w-screen ml-[280px] overflow-hidden">
+        <Alert />
+        <div className="mt-8">
+          <NewLeadEdit />
+        </div>
         <div>
           <AddLeadModal show={showModal} handleClose={hideModalHandler}>
             <AddLeadForm handleClose={hideModalHandler} />

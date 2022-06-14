@@ -5,12 +5,17 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 
 function AddLeadButton({ text, onClick }) {
   return (
-    <div onClick={onClick}>
-      <p className="flex items-center gap-2 text-white font-medium">
-        <IoIosAddCircleOutline />
-        {text}
-      </p>
-    </div>
+    <button
+      class="btn btn-primary gap-2 flex items-center justify-center"
+      onClick={onClick}
+    >
+      <div>
+        <IoIosAddCircleOutline size={20} />
+      </div>
+      <div>
+        <span>Add New Lead</span>
+      </div>
+    </button>
   );
 }
 

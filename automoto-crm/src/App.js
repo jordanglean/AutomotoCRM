@@ -12,22 +12,27 @@ import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import Support from "./pages/Support";
 
+// Context Provider
+import { AlertProvider } from "./context/Alert/AlertContext";
+
 function App() {
   return (
     <Router>
       <div className="h-full w-screen bg-neutral-800 flex">
-        {/* Nav Bar */}
-        <Header heading="AutoMoto" />
-        {/* Routes */}
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/leads" element={<Leads />} />
-          <Route path="/converting" element={<Converting />} />
-          <Route path="/completed" element={<Completed />} />
-          <Route path="/Analytics" element={<Analytics />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/support" element={<Support />} />
-        </Routes>
+        <AlertProvider>
+          {/* Nav Bar */}
+          <Header heading="AutoMoto" />
+          {/* Routes */}
+          <Routes>
+            <Route exact path="/" element={<Leads />} />
+            <Route path="/leads" element={<Leads />} />
+            <Route path="/converting" element={<Converting />} />
+            <Route path="/completed" element={<Completed />} />
+            <Route path="/Analytics" element={<Analytics />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/support" element={<Support />} />
+          </Routes>
+        </AlertProvider>
       </div>
     </Router>
   );

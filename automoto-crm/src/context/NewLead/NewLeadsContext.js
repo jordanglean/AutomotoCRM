@@ -9,28 +9,13 @@ export const NewLeadsProvider = ({ children }) => {
     newLeads: [],
     isLoading: true,
     editItem: {},
-    edit: false,
+    isLeadEditOpen: false,
   };
 
   const [state, dispatch] = useReducer(newLeadReducer, initialState);
 
-  // Set State with fetched Data
-  useEffect(() => {
-    fetchNewLeadData();
-  }, []);
-
   // Set Loading
   const setLoading = () => dispatch({ type: "SET_LOADING" });
-
-  // Fetch New Lead Data
-  const fetchNewLeadData = async () => {
-    const response = await fetch("/newLeads");
-    const data = await response.json();
-    dispatch({
-      type: "GET_NEW_LEADS",
-      payload: data,
-    });
-  };
 
   // Search Lead
   const searchLead = async (lead) => {
@@ -90,33 +75,11 @@ export const NewLeadsProvider = ({ children }) => {
       type: "SET_ITEM_TO_EDIT",
       payload: item,
     });
-    console.log("LEAD SET TO EDIT!!", state.editItem);
-  };
-
-  // Update Item
-  const updateNewLead = async (id, updLead) => {
-    const response = await fetch(`/newLeads/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updLead),
-    });
-
-    const data = await response.json();
-
-    dispatch({
-      type: "UPDATE_LEAD",
-      payload: state.newLeads.map((lead) =>
-        lead.id === id ? { ...lead, ...data } : lead
-      ),
-    });
   };
 
   // Clear Lead Edit
   const clearLeadEdit = () => {
     setLoading();
-    fetchNewLeadData();
     dispatch({
       type: "CLEAR_LEAD_SEARCH",
     });
@@ -131,14 +94,11 @@ export const NewLeadsProvider = ({ children }) => {
   return (
     <NewLeadsContext.Provider
       value={{
-        newLeads: state.newLeads,
+        ...state,
+        dispatch,
         addNewLeadHandler,
-        leadEdit: state.editItem,
-        setLeadEdit: state.edit,
         setEditLead,
         closeLeadEdit,
-        updateNewLead,
-        isLoading: state.isLoading,
         getNewLeadsCount,
         deleteNewLead,
         convertNewLead,

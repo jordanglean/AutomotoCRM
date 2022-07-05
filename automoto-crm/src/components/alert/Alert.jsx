@@ -9,14 +9,14 @@ function Alert() {
 
   return (
     <div
-      className={`alert alert-success shadow-lg w-full mb-4 h-10 ${
+      className={`alert ${alert?.type} shadow-lg w-full mb-4 h-10 ${
         alert === null && "hidden"
       }`}
     >
       <div>
         <span className="text-md font-semibold flex justify-center items-center gap-2">
           <IoIosCheckmarkCircle size={20} />
-          New Lead has been manually created
+          {alert?.msg}
         </span>
       </div>
     </div>

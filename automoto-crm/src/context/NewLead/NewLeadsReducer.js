@@ -20,7 +20,7 @@ const newLeadReducer = (state, action) => {
       return {
         ...state,
         editItem: action.payload,
-        edit: true,
+        isLeadEditOpen: true,
       };
     case "UPDATE_LEAD":
       return {
@@ -32,6 +32,7 @@ const newLeadReducer = (state, action) => {
         ...state,
         editItem: {},
         edit: false,
+        isLeadEditOpen: false,
       };
     case "SEARCH_LEAD":
       return {

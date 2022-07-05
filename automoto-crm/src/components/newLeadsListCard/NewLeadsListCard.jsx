@@ -6,7 +6,7 @@ import { RiMoneyPoundCircleFill } from "react-icons/ri";
 import { GiFullMotorcycleHelmet } from "react-icons/gi";
 
 function NewLeadsListCard({ lead }) {
-  const { setEditLead } = useContext(NewLeadsContext);
+  const { dispatch } = useContext(NewLeadsContext);
 
   return (
     <div class="indicator w-auto">
@@ -25,8 +25,8 @@ function NewLeadsListCard({ lead }) {
             <h2 class="card-title">
               {lead.firstName} {lead.lastName}
             </h2>
-            <div className="my-4 flex items-center justify-between gap-2">
-              <p className="font-medium uppercase">{lead.bike}</p>
+            <div className="my-1">
+              <p className="font-medium uppercase text-center">{lead.bike}</p>
             </div>
             <div class="card-actions justify-center">
               <div class="badge badge-outline flex justify-center items-end gap-2">
@@ -44,6 +44,17 @@ function NewLeadsListCard({ lead }) {
                 {lead.requireFinance === true ? "Finance" : "Cash"}
               </div>
             </div>
+            <p className="font-light lowercase text-sm text-center mt-2">
+              Recived Today at 11:23am
+            </p>
+            <button
+              className="btn btn-accent btn-sm -mb-4 mt-2 w-full"
+              onClick={() =>
+                dispatch({ type: "SET_ITEM_TO_EDIT", payload: lead })
+              }
+            >
+              View Lead
+            </button>
           </div>
         </div>
       </div>
